@@ -1,3 +1,9 @@
 <?php
-include('connection/config.php');
-include('connection/connection.php');
+include('connection/Config.php');
+include('connection/Database.php');
+include('rest/controllers/MainController.php');
+include('rest/controllers/ResponceController.php');
+include('rest/controllers/ListController.php');
+include('rest/controllers/GetController.php');
+include('rest/models/ListModel.php');
+include('rest/models/GetModel.php');
