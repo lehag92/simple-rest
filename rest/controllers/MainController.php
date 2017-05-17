@@ -14,15 +14,15 @@ class MainController
             'addresses' => ['GET'],
         ],
         'combine' => [
-            'addresses' => ['GET', 'POST', 'PUT', 'DELETE'],
+            'addresses' => ['GET', 'POST'],
         ]
     ];
 
     public function __construct($type, $route, $data)
     {
         $routeParts = array_filter(explode('/', $route));
-        if($this->checkRoute($routeParts)){
-             $this->processRouting($type, $routeParts, $data);
+        if ($this->checkRoute($routeParts)) {
+            $this->processRouting($type, $routeParts, $data);
         }
     }
 
@@ -31,7 +31,7 @@ class MainController
         switch (count($routeParts)) {
             //One part route (simple)
             case 1:
-               $this->doSimleRoute($type, $routeParts);
+                $this->doSimleRoute($type, $routeParts);
                 break;
             //Two part route
             case 2:
@@ -41,7 +41,6 @@ class MainController
                 ResponceController::sendResponce(405, 'Not Allowed!');
                 break;
         }
-
     }
 
     protected function checkRoute($routeParts)
@@ -73,19 +72,15 @@ class MainController
         ) {
             switch ($type) {
                 case 'GET':
-
+                    $controller = new GetController($routeParts[1]);
+                    $controller->get();
                     break;
                 case 'POST':
-
+                    $controller = new EditController($routeParts[1], $data);
+                    $controller->edit();
                     break;
-                case 'PUT':
-
-                    break;
-                case 'DELETE':
-
-                    break;
-
                 default:
+                    ResponceController::sendResponce(405, 'Not Allowed!');
                     break;
             }
         } else {
