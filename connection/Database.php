@@ -2,6 +2,8 @@
 namespace Connection;
 
 use PDO;
+use PDOException;
+use Rest\Controllers\ResponceController;
 
 class Database {
 
@@ -52,7 +54,7 @@ class Database {
         }
 
         if (!$result) {
-            throw new \Exception('Bad Config!');
+            ResponceController::sendResponce(500, 'Bad DB Config!');
         }
     }
 
@@ -64,11 +66,16 @@ class Database {
     public static function get() {
         if(!isset(self::$db)){
             self::setConfig(Config::getConfig());
-            self::$db = new PDO(
-                'mysql:host='.self::$dbHost.';dbname='.self::$dbName,
-                self::$dbUser,
-                self::$dbPassword
+            try{
+                self::$db = new PDO(
+                    'mysql:host='.self::$dbHost.';dbname='.self::$dbName,
+                    self::$dbUser,
+                    self::$dbPassword
                 );
+            }
+            catch( PDOException $Exception ) {
+                ResponceController::sendResponce(500, $Exception->getMessage());
+            }
         }
 
         return self::$db;
