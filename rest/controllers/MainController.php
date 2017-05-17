@@ -69,6 +69,7 @@ class MainController
         if (isset($this->allowedRoutes['combine'][$routeParts[0]])
             && in_array($type, $this->allowedRoutes['combine'][$routeParts[0]])
             && is_numeric($routeParts[1])
+            && strpos( $routeParts[1], '.') == false
         ) {
             switch ($type) {
                 case 'GET':
