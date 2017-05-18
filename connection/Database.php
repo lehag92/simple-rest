@@ -3,7 +3,7 @@ namespace Connection;
 
 use PDO;
 use PDOException;
-use Rest\Controllers\ResponceController;
+use Rest\Controllers\ResponseController;
 
 class Database {
 
@@ -54,7 +54,9 @@ class Database {
         }
 
         if (!$result) {
-            ResponceController::sendResponce(500, 'Bad DB Config!');
+            ResponseController::sendResponse(500, 'Bad DB Config!');
+            //Exit if bad config
+            exit();
         }
     }
 
@@ -74,7 +76,9 @@ class Database {
                 );
             }
             catch( PDOException $Exception ) {
-                ResponceController::sendResponce(500, $Exception->getMessage());
+                ResponseController::sendResponse(500, $Exception->getMessage());
+                //Exit if Exception
+                exit();
             }
         }
 

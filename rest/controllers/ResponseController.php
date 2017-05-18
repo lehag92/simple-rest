@@ -1,10 +1,10 @@
 <?php
 namespace Rest\Controllers;
 
-class ResponceController
+class ResponseController
 {
 
-    public static function sendResponce($code, $message, $body = '')
+    public static function sendResponse($code, $message, $body = '')
     {
 
         header('Content-type: application/json');

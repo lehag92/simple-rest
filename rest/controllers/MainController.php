@@ -38,7 +38,7 @@ class MainController
                 $this->doCombineRoute($type, $routeParts, $data);
                 break;
             default:
-                ResponceController::sendResponce(405, 'Not Allowed!');
+                ResponseController::sendResponse(405, 'Not Allowed!');
                 break;
         }
     }
@@ -47,7 +47,7 @@ class MainController
     {
         //Allow route only for one or two parts
         if (empty($routeParts) || count($routeParts) > 2) {
-            ResponceController::sendResponce(404, 'Not found!');
+            ResponseController::sendResponse(404, 'Not found!');
             return false;
         }
         return true;
@@ -60,7 +60,7 @@ class MainController
         ) {
             new ListController();
         } else {
-            ResponceController::sendResponce(405, 'Not Allowed!');
+            ResponseController::sendResponse(405, 'Not Allowed!');
         }
     }
 
@@ -81,11 +81,11 @@ class MainController
                     $controller->edit();
                     break;
                 default:
-                    ResponceController::sendResponce(405, 'Not Allowed!');
+                    ResponseController::sendResponse(405, 'Not Allowed!');
                     break;
             }
         } else {
-            ResponceController::sendResponce(405, 'Not Allowed!');
+            ResponseController::sendResponse(405, 'Not Allowed!');
         }
     }
 }

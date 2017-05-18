@@ -12,9 +12,9 @@ class GetController extends AbstractController
 
         $item = $model->get($this->id);
         if (!empty($item)) {
-            ResponceController::sendResponce(200, 'OK', $item);
+            ResponseController::sendResponse(200, 'OK', $item);
         } else {
-            ResponceController::sendResponce(404, 'not found in DB!');
+            ResponseController::sendResponse(404, 'not found in DB!');
         }
     }
 }

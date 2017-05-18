@@ -28,15 +28,15 @@ class EditController extends AbstractController
 
                 $editedRows = $model->edit($this->id, $this->validatedData);
                 if (!empty($editedRows)) {
-                    ResponceController::sendResponce(200, 'Edited!');
+                    ResponseController::sendResponse(200, 'Edited!');
                 } else {
-                    ResponceController::sendResponce(304, 'Nothing to change!');
+                    ResponseController::sendResponse(304, 'Nothing to change!');
                 }
             } else {
-                ResponceController::sendResponce(400, 'Check your data!');
+                ResponseController::sendResponse(400, 'Check your data!');
             }
         } else {
-            ResponceController::sendResponce(404, 'not found in DB!');
+            ResponseController::sendResponse(404, 'not found in DB!');
         }
     }
 

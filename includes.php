@@ -1,12 +1,19 @@
 <?php
-include('connection/Config.php');
-include('connection/Database.php');
-include('rest/controllers/MainController.php');
-include('rest/controllers/ResponceController.php');
-include('rest/controllers/ListController.php');
-include('rest/controllers/AbstractController.php');
-include('rest/controllers/GetController.php');
-include('rest/controllers/EditController.php');
-include('rest/models/ListModel.php');
-include('rest/models/GetModel.php');
-include('rest/models/EditModel.php');
+//Files array
+$files = [
+    'connection/Config.php',
+    'connection/Database.php',
+    'rest/controllers/MainController.php',
+    'rest/controllers/ResponseController.php',
+    'rest/controllers/ListController.php',
+    'rest/controllers/AbstractController.php',
+    'rest/controllers/GetController.php',
+    'rest/controllers/EditController.php',
+    'rest/models/ListModel.php',
+    'rest/models/GetModel.php',
+    'rest/models/EditModel.php',
+];
+//Include
+foreach ($files as $file) {
+    require_once ($file);
+}

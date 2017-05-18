@@ -9,7 +9,7 @@ class ListController
     public function __construct()
     {
         $list = $this->fetchAll();
-        ResponceController::sendResponce(200, 'OK', $list);
+        ResponseController::sendResponse(200, 'OK', $list);
     }
 
     private function fetchAll()
